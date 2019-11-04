@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="header-wrapper__for-mobile-contacts">
-            <h2>Автоэлектрик в Минске 24 часа</h2>
+            <h2><span>Автоэлектрик в Минске</span> <span>24 часа</span></h2>
             <h2><a href="">+375 29 925 80 45</a></h2>
             <h2><a href="">+375 25 605 81 75</a></h2>
         </div>

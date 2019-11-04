@@ -1,0 +1,59 @@
+@import "../../partials/variables";
+@import "../../partials/functions";
+@import "../../partials/mixins";
+
+nav[role="navigation"]{
+  margin-top: @defaultGutter*1.5;
+  margin-bottom: @defaultGutter*1.5;
+  ul[role="menu"]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    li{
+      margin-right: @defaultGutter*7;
+      &:last-child{
+        margin-right:0;
+      }
+      a{
+        font-family: @defaultFontFamily;
+        font-size: @defaultFontSize;
+        font-weight: bold;
+        color:@defaultFontColor;
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+        transition: border-bottom .5s;
+        &:hover{
+          border-bottom: 3px solid @defaultFontColor;
+        }
+      }
+    }
+  }
+}
+#mobile-menu{
+  display: none;
+  margin-top: @defaultGutter;
+  p{
+    text-align: center;
+    margin-bottom: @defaultGutter/2;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  ul[role="menu"]{
+    display: none;
+    li{
+      padding: @defaultGutter/4 @defaultGutter/4;
+      padding-left: @defaultGutter/2;
+      background-color: #55595c;
+      margin-right: 0!important;
+      margin-bottom: @defaultGutter/4;
+      a{
+        color:white;
+        border-bottom:none;
+        &:hover{
+          border-bottom:none;
+        }
+      }
+    }
+  }
+}

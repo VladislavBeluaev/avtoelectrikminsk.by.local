@@ -1,0 +1,35 @@
+@import "../../partials/variables";
+@import "../../partials/functions";
+@import "../../partials/mixins";
+
+@media screen and (max-width: 579px) {
+  nav[role="navigation"]{
+    display: none;
+  }
+  #mobile-menu{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  nav[role="navigation"]{
+    ul[role="menu"]{
+      li{
+        margin-right: @defaultGutter*3!important;
+        &:last-child{
+          margin-right:0!important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  nav[role="navigation"]{
+    ul[role="menu"]{
+      li{
+        margin-right: @defaultGutter*5.5;
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+@import "../../partials/variables";
+@import "../../partials/functions";
+@import "../../partials/mixins";
+
+.diagnostics {
+  h2{
+    font-family: @defaultFontFamily;
+    font-size: @defaultFontSize*2;
+    font-weight: bold;
+    margin-bottom: @defaultGutter;
+  }
+  .vertical-margin{
+    height: 20px;
+  }
+  .diagnostics-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1%;
+    grid-template-rows: 1fr;
+    .card {
+      .diagnostics-content__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        .blackout {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .item__header {
+          font-family: @defaultFontFamily;
+          font-size: @defaultFontSize*1.5;
+          font-weight: bold;
+          position: absolute;
+          color: white;
+          /*border-bottom: 3px solid transparent;
+          transition: border-bottom .5s;
+          &:hover {
+            cursor: pointer;
+            border-bottom: 3px solid white;
+          }*/
+
+          span {
+            &:first-child {
+              .new-line();
+            }
+
+            &:last-child {
+              display: block;
+              .alignTo(center);
+            }
+          }
+
+        }
+
+        p {
+          img {
+            .size(100%, auto);
+          }
+        }
+      }
+
+      .card-content {
+        font-family: @defaultFontFamily;
+        font-size: @defaultFontSize;
+        font-weight: bold;
+        line-height: @defaultFontLineHeight;
+        padding: @defaultGutter/4 @defaultGutter/4;
+        text-align: center;
+
+        button {
+          margin-top: @defaultGutter/2;
+        }
+      }
+    }
+  }
+}
