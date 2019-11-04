@@ -1,25 +1,45 @@
-.no-margin{
-  margin:0;
+@import "variables";
+
+.no-margin {
+  margin: 0;
 }
 
-.no-padding{
-  margin:0;
+.no-padding {
+  margin: 0;
 }
 
-.no-border{
-  border:none;
+.no-border {
+  border: none;
 }
 
-.no-focus-style{
-  &:focus{
+.no-focus-style {
+  &:focus {
     outline: none;
   }
 }
 
-.no-display{
+.no-display {
   display: none;
 }
 
-.no-visible{
+.no-visible {
   visibility: hidden;
+}
+
+.mobile-contacts-h2 {
+
+  color: rgba(0, 0, 0, 0.75);
+
+  & > a {
+    color: rgba(0, 0, 0, 0.75);
+  }
+
+  font-family: @defaultFontFamily;
+  font-size: @defaultFontSize*2;
+  font-weight: @defaultFontWeight*1.5;
+
+  &:nth-child(2) {
+    margin-top: @defaultGutter*.75;
+    margin-bottom: @defaultGutter*.75;
+  }
 }

@@ -8,11 +8,15 @@
             </div>
             <div class="header-wrapper__mobile-contacts">
                 <h2>Автоэлектрик в Минске 24 часа</h2>
-                <h2>+375 29 925 80 45</h2>
-                <h2>+375 25 605 81 75</h2>
+                <h2><a href="">+375 29 925 80 45</a></h2>
+                <h2><a href="">+375 25 605 81 75</a></h2>
             </div>
+
             <div class="header-wrapper__social-contacts">
-                <h5>г.Минск, ул. Западная 7 А</h5>
+                <h5>
+                    <span>г.Минск,</span>
+                    <span>ул. Западная 7 А</span>
+                </h5>
                 <div class="social-contacts__wrapper">
                     <p>
                         <a href=""><i class="fab fa-instagram"></i></a>
@@ -24,10 +28,13 @@
                         <a href=""><i class="fab fa-viber"></i></a>
                     </p>
                 </div>
+                <div class="height-support"></div>
             </div>
-
         </div>
-
-
+        <div class="header-wrapper__for-mobile-contacts">
+            <h2>Автоэлектрик в Минске 24 часа</h2>
+            <h2><a href="">+375 29 925 80 45</a></h2>
+            <h2><a href="">+375 25 605 81 75</a></h2>
+        </div>
     </header>
     @endsection
