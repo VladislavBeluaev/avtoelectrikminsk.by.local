@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
    function index(){
-       return view('main');
+       /*return view('main');*/
+       return view('animate_main');
    }
 }

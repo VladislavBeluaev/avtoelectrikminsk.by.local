@@ -243,23 +243,79 @@ nav[role="navigation"] ul[role="menu"] li a:hover {
 #mobile-menu ul[role="menu"] li a:hover {
   border-bottom: none;
 }
-.diagnostics h2 {
-  font-family: "Roboto", Sans-serif;
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 24px;
-}
-.diagnostics .vertical-margin {
-  height: 20px;
-}
-.diagnostics .diagnostics-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 1%;
-  grid-template-rows: 1fr;
-}
-.diagnostics .diagnostics-content .card .diagnostics-content__item {
+/*@import "pages partials/main_content/content";*/
+.box {
+  width: 100%;
   position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: flex-end;
+}
+#card-container {
+  width: 23%;
+  height: 165px;
+  z-index: 1;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+#card-container:nth-child(4n+2) {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+#card-container:nth-child(4n+3) {
+  margin-right: 2%;
+}
+#card-container:nth-child(1),
+#card-container:nth-child(2),
+#card-container:nth-child(3),
+#card-container:nth-child(4) {
+  margin-bottom: 2%;
+}
+#card-container:hover {
+  cursor: pointer;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+#card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 0.8s linear;
+  transition: all 0.8s linear;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+#card .blackout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+#card:hover {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.header-flex {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -267,51 +323,36 @@ nav[role="navigation"] ul[role="menu"] li a:hover {
   -webkit-box-pack: center;
           justify-content: center;
   width: 100%;
-}
-.diagnostics .diagnostics-content .card .diagnostics-content__item .blackout {
-  position: absolute;
-  width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
 }
-.diagnostics .diagnostics-content .card .diagnostics-content__item .item__header {
-  font-family: "Roboto", Sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  position: absolute;
-  color: white;
-  /*border-bottom: 3px solid transparent;
-          transition: border-bottom .5s;
-          &:hover {
-            cursor: pointer;
-            border-bottom: 3px solid white;
-          }*/
+.header-flex h3 {
+  width: inherit;
 }
-.diagnostics .diagnostics-content .card .diagnostics-content__item .item__header span:first-child::after {
+.back {
   display: block;
-  clear: both;
-  content: "";
-}
-.diagnostics .diagnostics-content .card .diagnostics-content__item .item__header span:last-child {
-  display: block;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  box-sizing: border-box;
   text-align: center;
+  opacity: 0.7;
+  background: #F9F3E4;
 }
-.diagnostics .diagnostics-content .card .diagnostics-content__item p img {
-  width: 100%;
-  height: auto;
+h1,
+p {
+  font-family: "Questrial", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
-.diagnostics .diagnostics-content .card .card-content {
-  font-family: "Roboto", Sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1.65;
-  padding: 6px 6px;
-  text-align: center;
+h1 {
+  font-size: 1.2em;
+  padding-top: 15px;
+  color: #DD899E;
 }
-.diagnostics .diagnostics-content .card .card-content button {
-  margin-top: 12px;
+p {
+  font-size: 0.5em;
+}
+.date {
+  color: #D0B2AF;
 }
 @media screen and (max-width: 516px) {
   .header-wrapper .header-wrapper__logo {
@@ -404,23 +445,4 @@ nav[role="navigation"] ul[role="menu"] li a:hover {
     margin-right: 132px;
   }
 }
-@media screen and (max-width: 1199px) {
-  .diagnostics .diagnostics-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-row-gap: 1%;
-  }
-}
-@media screen and (max-width: 767px) {
-  .diagnostics .diagnostics-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 0;
-    grid-template-rows: repeat(4, 1fr);
-    grid-row-gap: 1%;
-  }
-  .diagnostics .vertical-margin {
-    height: 70px;
-  }
-}
+/*@import "../pages partials/main_content/media_content";*/
