@@ -66,14 +66,14 @@ main[role="main"] {
                         transform: rotateY(180deg);
                         box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
 
-                        .blackout {
+                        /*.blackout {
                             background-color: transparent;
-                        }
+                        }*/
                     }
 
                     .face {
                         display: flex;
-                        align-items: center;
+                        //align-items: center;
                         justify-content: center;
                         position: absolute;
                         width: 100%;
@@ -81,6 +81,7 @@ main[role="main"] {
                         backface-visibility: hidden;
 
                         .service-header {
+                            margin-top: @defaultGutter*2;
                             position: absolute;
                             z-index: 1000;
                             font-family: @defaultFontFamily;
@@ -117,6 +118,7 @@ main[role="main"] {
                         box-sizing: border-box;
                         text-align: center;
                         background: #F9F3E4;
+                        z-index: @defaultZIndex*100;
 
                         .back-short-content {
                             p{

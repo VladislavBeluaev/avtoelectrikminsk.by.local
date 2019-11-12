@@ -25,13 +25,16 @@
                                 </div>
                                 <div class="back face">
                                     <div class="back-short-content">
-                                        <p>{{$service_type->description}}</p>
+                                        <p>{{$service_type->short_description}}</p>
                                     </div>
-                                    @unless(mb_strlen($service_type->description)===92)
                                     <div class="back-read-more-btn">
                                         <button type="button" class="btn btn-dark btn-sm">Читать далее</button>
                                     </div>
-                                        @endunless
+                                    {{--@unless(mb_strlen($service_type->short_description)===92)
+                                    <div class="back-read-more-btn">
+                                        <button type="button" class="btn btn-dark btn-sm">Читать далее</button>
+                                    </div>
+                                        @endunless--}}
                                 </div>
                             </div>
                         </div>
