@@ -99,7 +99,7 @@
     var toggleMenu$ = btn$.next();
     $(btn$).on('click.toggle-menu', 'i', toggleMenu.bind(null, toggleMenu$));
 
-    function toggleMenu(menu$, event, triggerData) {
+    function toggleMenu(menu$, triggerData) {
       if (triggerData === 'close') {
         closeToggleMenu(menu$);
         return false;
@@ -142,6 +142,18 @@
       if (windowWidth >= 580 && toggleMenu$.hasClass('d-none') === false) {
         btn$.trigger('click.toggle-menu', 'close');
       }
+    }
+
+    $('.service_type').on('click.service_description', toggle_description);
+
+    function toggle_description(e) {
+      var target = e.target;
+      var parent = '#card-container';
+      if (target.tagName !== 'BUTTON') return false;
+      var currentServiceDescription$ = $(target.closest(parent));
+      currentServiceDescription$.animate({
+        height: "350px"
+      }, 500);
     }
   });
 })(jQuery);

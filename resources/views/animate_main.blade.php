@@ -8,7 +8,7 @@
                 <h2>{{$service->name}}</h2>
                 <div class="box">
                     @foreach($service->service_types as $service_type)
-                        <div id="card-container">
+                        <div id="card-container" class="service_type">
                             <div id="card">
                                 <div class="front face">
                                     <p class="service-header">
@@ -28,7 +28,7 @@
                                         <p>{{$service_type->short_description}}</p>
                                     </div>
                                     <div class="back-read-more-btn">
-                                        <button type="button" class="btn btn-dark btn-sm">Читать далее</button>
+                                        <button type="button" class="btn btn-dark btn-sm">Полное описание</button>
                                     </div>
                                     {{--@unless(mb_strlen($service_type->short_description)===92)
                                     <div class="back-read-more-btn">

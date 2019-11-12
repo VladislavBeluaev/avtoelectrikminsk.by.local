@@ -24,7 +24,7 @@ main[role="main"] {
 
             #card-container {
                 width: 23.5%;
-                height: 165px;
+                height: 180px;
                 z-index: 1;
                 perspective: 1000px;
 
@@ -66,9 +66,9 @@ main[role="main"] {
                         transform: rotateY(180deg);
                         box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
 
-                        /*.blackout {
-                            background-color: transparent;
-                        }*/
+                        .blackout, .service-header{
+                            visibility: hidden;
+                        }
                     }
 
                     .face {
@@ -81,7 +81,7 @@ main[role="main"] {
                         backface-visibility: hidden;
 
                         .service-header {
-                            margin-top: @defaultGutter*2;
+                            margin-top: @defaultGutter*2.7;
                             position: absolute;
                             z-index: 1000;
                             font-family: @defaultFontFamily;

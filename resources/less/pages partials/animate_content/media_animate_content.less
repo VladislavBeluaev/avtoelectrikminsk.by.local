@@ -1,20 +1,48 @@
 @import "../../partials/variables";
 @import "../../partials/functions";
 @import "../../partials/mixins";
+
+@media screen and (min-width: 319px) and (max-width: 359px){
+
+}
+@media screen and (min-width: 319px) and (max-width: 370px) {
+  main[role="main"] {
+    .container {
+      .box {
+        #card {
+          .face{
+            .service-header{
+              margin-top: @defaultGutter*2.8!important;
+              font-size: @defaultFontSize!important;
+            }
+          }
+          .back {
+            .back-short-content {
+              p {
+                font-size: @defaultFontSize*.8!important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 767px) {
-  body{
-    .container{
+  body {
+    .container {
       main[role="main"] {
         .container {
           text-align: center;
           .box {
             justify-content: center;
             #card-container {
-              width: 70%!important;
-              &:nth-child(2n+1){
-                margin-right:0%!important;
+              width: 70% !important;
+              &:nth-child(2n+1) {
+                margin-right: 0% !important;
               }
-              margin-bottom: 2%!important;
+              margin-bottom: 2% !important;
             }
           }
         }
@@ -23,48 +51,50 @@
   }
 
 }
+
 @media screen and (max-width: 991px) {
-  .container{
+  .container {
     main[role="main"] {
       .container {
         .box {
           #card-container {
             width: 48%;
-            &:nth-child(3n+2){
-              margin-right:0!important;
-              margin-left:0!important;
+            &:nth-child(3n+2) {
+              margin-right: 0 !important;
+              margin-left: 0 !important;
             }
             &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
-              margin-bottom: 2%!important;
+              margin-bottom: 2% !important;
             }
-            &:nth-child(2n+1){
-              margin-right:2%!important;
+            &:nth-child(2n+1) {
+              margin-right: 2% !important;
             }
-            margin-bottom: 2%!important;
+            margin-bottom: 2% !important;
           }
         }
       }
     }
   }
 }
+
 @media screen and (max-width: 1199px) {
-    main[role="main"] {
-        .container {
-            .box {
-                #card-container {
-                    width: 31.3%;
-                    margin-right:0!important;
-                    margin-left:0!important;
-                    margin-bottom: 0!important;
-                  &:nth-child(3n+2){
-                      margin-right:2%!important;
-                      margin-left:2%!important;
-                  }
-                    &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
-                        margin-bottom: 2%!important;
-                    }
-                }
-            }
+  main[role="main"] {
+    .container {
+      .box {
+        #card-container {
+          width: 31.3%;
+          margin-right: 0 !important;
+          margin-left: 0 !important;
+          margin-bottom: 0 !important;
+          &:nth-child(3n+2) {
+            margin-right: 2% !important;
+            margin-left: 2% !important;
+          }
+          &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5),&:nth-child(6) {
+            margin-bottom: 2% !important;
+          }
         }
+      }
     }
+  }
 }
