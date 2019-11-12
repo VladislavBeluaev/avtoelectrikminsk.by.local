@@ -186,7 +186,6 @@ a {
 }
 nav[role="navigation"] {
   margin-top: 36px;
-  margin-bottom: 36px;
 }
 nav[role="navigation"] ul[role="menu"] {
   display: -webkit-box;
@@ -244,7 +243,14 @@ nav[role="navigation"] ul[role="menu"] li a:hover {
   border-bottom: none;
 }
 /*@import "pages partials/main_content/content";*/
-.box {
+main[role="main"] .container h2 {
+  font-family: "Roboto", Sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 36px;
+  margin-bottom: 24px;
+}
+main[role="main"] .container .box {
   width: 100%;
   position: relative;
   display: -webkit-box;
@@ -258,34 +264,30 @@ nav[role="navigation"] ul[role="menu"] li a:hover {
   flex-flow: row wrap;
   align-content: flex-end;
 }
-#card-container {
-  width: 23%;
+main[role="main"] .container .box #card-container {
+  width: 23.5%;
   height: 165px;
   z-index: 1;
   -webkit-perspective: 1000px;
           perspective: 1000px;
 }
-#card-container:nth-child(4n+2) {
+main[role="main"] .container .box #card-container:nth-child(4n+2) {
   margin-left: 2%;
   margin-right: 2%;
 }
-#card-container:nth-child(4n+3) {
+main[role="main"] .container .box #card-container:nth-child(4n+3) {
   margin-right: 2%;
 }
-#card-container:nth-child(1),
-#card-container:nth-child(2),
-#card-container:nth-child(3),
-#card-container:nth-child(4) {
+main[role="main"] .container .box #card-container:nth-child(1),
+main[role="main"] .container .box #card-container:nth-child(2),
+main[role="main"] .container .box #card-container:nth-child(3),
+main[role="main"] .container .box #card-container:nth-child(4) {
   margin-bottom: 2%;
 }
-#card-container:hover {
+main[role="main"] .container .box #card-container:hover {
   cursor: pointer;
 }
-img {
-  width: 100%;
-  height: auto;
-}
-#card {
+main[role="main"] .container .box #card-container #card {
   width: 100%;
   height: 100%;
   position: relative;
@@ -295,7 +297,7 @@ img {
   transition: all 0.8s linear;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
-#card .blackout {
+main[role="main"] .container .box #card-container #card .blackout {
   position: absolute;
   top: 0;
   left: 0;
@@ -303,56 +305,78 @@ img {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
-#card:hover {
+main[role="main"] .container .box #card-container #card:hover {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
 }
-.face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+main[role="main"] .container .box #card-container #card:hover .blackout {
+  background-color: transparent;
 }
-.header-flex {
+main[role="main"] .container .box #card-container #card .face {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
           align-items: center;
   -webkit-box-pack: center;
           justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+main[role="main"] .container .box #card-container #card .face .service-header {
+  position: absolute;
+  z-index: 1000;
+  font-family: "Roboto", Sans-serif;
+  font-weight: bold;
+  font-size: 20.8px;
+  color: white;
+}
+main[role="main"] .container .box #card-container #card .face .service-header span {
+  display: block;
+  text-transform: initial;
+}
+main[role="main"] .container .box #card-container #card .face .service-header span:first-child {
+  text-transform: capitalize;
+}
+main[role="main"] .container .box #card-container #card .face .service-header span:first-child::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+main[role="main"] .container .box #card-container #card .face .service-header span:last-child {
+  display: block;
+  text-align: center;
+}
+main[role="main"] .container .box #card-container #card .face img {
   width: 100%;
   height: 100%;
 }
-.header-flex h3 {
-  width: inherit;
-}
-.back {
+main[role="main"] .container .box #card-container #card .back {
   display: block;
+  position: relative;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   box-sizing: border-box;
   text-align: center;
-  opacity: 0.7;
   background: #F9F3E4;
 }
-h1,
-p {
-  font-family: "Questrial", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+main[role="main"] .container .box #card-container #card .back .back-short-content p {
+  text-align: center;
+  padding: 4.8px 4.8px;
+  font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: bold;
 }
-h1 {
-  font-size: 1.2em;
-  padding-top: 15px;
-  color: #DD899E;
+main[role="main"] .container .box #card-container:nth-child(6) .service-header span:first-child,
+main[role="main"] .container .box #card-container:nth-child(7) .service-header span:first-child,
+main[role="main"] .container .box #card-container:nth-child(8) .service-header span:first-child {
+  text-align: center;
 }
-p {
-  font-size: 0.5em;
-}
-.date {
-  color: #D0B2AF;
+main[role="main"] .container:last-child #card-container .service-header span:first-child {
+  text-align: center;
 }
 @media screen and (max-width: 516px) {
   .header-wrapper .header-wrapper__logo {
@@ -446,3 +470,33 @@ p {
   }
 }
 /*@import "../pages partials/main_content/media_content";*/
+@media screen and (max-width: 1199px) {
+  main[role="main"] .container .box #card-container {
+    width: 31.3%;
+    margin-right: 0!important;
+    margin-left: 0!important;
+    margin-bottom: 0!important;
+    /*width: 31.3%;
+                    &:nth-child(3){
+                        margin-right: 0!important;
+                    }
+                    &:nth-child(4){
+                        margin-right: 2%;
+                    }
+                    &:nth-child(5){
+                        //margin-right: 2%;
+                        //margin-left: 1%;
+                    }*/
+  }
+  main[role="main"] .container .box #card-container:nth-child(3n+2) {
+    margin-right: 2%!important;
+    margin-left: 2%!important;
+  }
+  main[role="main"] .container .box #card-container:nth-child(1),
+  main[role="main"] .container .box #card-container:nth-child(2),
+  main[role="main"] .container .box #card-container:nth-child(3),
+  main[role="main"] .container .box #card-container:nth-child(4),
+  main[role="main"] .container .box #card-container:nth-child(5) {
+    margin-bottom: 2%!important;
+  }
+}

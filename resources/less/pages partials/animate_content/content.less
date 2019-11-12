@@ -2,106 +2,153 @@
 @import "../../partials/functions";
 @import "../../partials/mixins";
 
-.box {
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  //justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-flow: row wrap;
-  align-content: flex-end;
-}
+main[role="main"] {
+    .container {
+        h2 {
+            font-family: @defaultFontFamily;
+            font-size: @defaultFontSize*2;
+            font-weight: bold;
+            margin-top: @defaultGutter*1.5;
+            margin-bottom: @defaultGutter;
+        }
 
-#card-container {
-  width: 23%;
-  height: 165px;
-  z-index: 1;
-  perspective: 1000px;
-  &:nth-child(4n+2){
-    margin-left: 2%;
-    margin-right: 2%;
-  }
-  &:nth-child(4n+3){
-    margin-right: 2%;
-  }
-  &:nth-child(1),&:nth-child(2),&:nth-child(3),&:nth-child(4){
-    margin-bottom: 2%;
-  }
-  &:hover{
-    cursor: pointer;
-  }
-}
+        .box {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex-flow: row wrap;
+            align-content: flex-end;
 
-img {
-  width: 100%;
-  height: auto;
-}
+            #card-container {
+                width: 23.5%;
+                height: 165px;
+                z-index: 1;
+                perspective: 1000px;
 
-#card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all .8s linear;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-  .blackout{
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-}
+                &:nth-child(4n+2) {
+                    margin-left: 2%;
+                    margin-right: 2%;
+                }
 
-#card:hover {
-  transform: rotateY(180deg);
-  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
-}
-.face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-.header-flex{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  h3{
-    width: inherit;
-  }
-}
+                &:nth-child(4n+3) {
+                    margin-right: 2%;
+                }
 
-.back {
-  display: block;
-  transform: rotateY(180deg);
-  box-sizing: border-box;
-  text-align: center;
-  opacity: .7;
-  background: #F9F3E4;
-}
+                &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+                    margin-bottom: 2%;
+                }
 
-h1, p {
-  font-family: "Questrial", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
+                &:hover {
+                    cursor: pointer;
+                }
 
-h1 {
-  font-size: 1.2em;
-  padding-top: 15px;
-  color: #DD899E;
-}
+                #card {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    transform-style: preserve-3d;
+                    transition: all .8s linear;
+                    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 
-p {
-  font-size: .5em;
-}
+                    .blackout {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.6);
+                    }
 
-.date {
-  color: #D0B2AF;
+                    &:hover {
+                        transform: rotateY(180deg);
+                        box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
+
+                        .blackout {
+                            background-color: transparent;
+                        }
+                    }
+
+                    .face {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        backface-visibility: hidden;
+
+                        .service-header {
+                            position: absolute;
+                            z-index: 1000;
+                            font-family: @defaultFontFamily;
+                            font-weight: bold;
+                            font-size: @defaultFontSize*1.3;
+                            color: white;
+
+                            span {
+                                display: block;
+                                text-transform: initial;
+
+                                &:first-child {
+                                    text-transform: capitalize;
+                                    .new-line;
+                                }
+
+                                &:last-child {
+                                    display: block;
+                                    text-align: center;
+                                }
+                            }
+                        }
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .back {
+                        display: block;
+                        position: relative;
+                        transform: rotateY(180deg);
+                        box-sizing: border-box;
+                        text-align: center;
+                        background: #F9F3E4;
+
+                        .back-short-content {
+                            p{
+                                text-align: center;
+                                padding: @defaultGutter/5 @defaultGutter/5;
+                                font-family: @defaultFontFamily;
+                                font-size: @defaultFontSize;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+
+                }
+
+                &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+                    .service-header {
+                        span:first-child {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:last-child {
+            #card-container {
+                .service-header {
+                    span:first-child {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
 }
