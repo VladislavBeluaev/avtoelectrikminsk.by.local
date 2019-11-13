@@ -24,12 +24,23 @@
                                     <img src="{{asset($service_type->img_src)}}" alt="{{$service_type->img_alt}}"/>
                                 </div>
                                 <div class="back face">
-                                    <div class="back-short-content">
-                                        <p>{{$service_type->short_description}}</p>
+                                    <div class="short-description">
+                                        <div class="back-short-content">
+                                            <p>{{$service_type->short_description}}</p>
+                                        </div>
+                                        <div class="back-read-more-btn">
+                                            <button type="button" class="btn btn-dark btn-sm">Полное описание</button>
+                                        </div>
                                     </div>
-                                    <div class="back-read-more-btn">
-                                        <button type="button" class="btn btn-dark btn-sm">Полное описание</button>
+                                    <div class="full-description d-none">
+                                        <div class="back-full-content">
+                                            <p>{{$service_type->description}}</p>
+                                        </div>
+                                        <div class="back-collapse-text">
+                                            <p><span>Свернуть описание</span><span class="fas fa-angle-up"></span></p>
+                                        </div>
                                     </div>
+
                                     {{--@unless(mb_strlen($service_type->short_description)===92)
                                     <div class="back-read-more-btn">
                                         <button type="button" class="btn btn-dark btn-sm">Читать далее</button>

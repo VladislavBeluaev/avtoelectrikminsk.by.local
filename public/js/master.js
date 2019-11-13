@@ -90,18 +90,226 @@
 /*!*********************************!*\
   !*** ./resources/js/_master.js ***!
   \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _classes_Menu_class__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./classes/Menu.class */ "./resources/js/classes/Menu.class.js");
+/* harmony import */ var _classes_Description_class__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./classes/Description.class */ "./resources/js/classes/Description.class.js");
+
+
 
 (function ($) {
   $(function () {
-    var btn$ = $('#hamburger-btn');
-    var toggleMenu$ = btn$.next();
-    $(btn$).on('click.toggle-menu', 'i', toggleMenu.bind(null, toggleMenu$));
+    new _classes_Menu_class__WEBPACK_IMPORTED_MODULE_0__["Menu"]('#hamburger-btn').run();
+    new _classes_Description_class__WEBPACK_IMPORTED_MODULE_1__["Description"]({
+      card: '.service_type',
+      cardContainer: '#card-container',
+      shortDescription: '.short-description',
+      fullDescription: '.full-description',
+      switchShortDescContainer: '.back-collapse-text'
+    }).show();
+    /*$('.service_type').on('click.service_description',toggle_description);
+    function toggle_description (e) {
+        let target = e.target;
+        let parent = '#card-container';
+          if(target.tagName!=='BUTTON')
+            return false;
+        let currentServiceDescription$ = $(target.closest(parent));
+        currentServiceDescription$.animate({
+            height: "350px",
+        }, 500 );
+      }*/
+  });
+})(jQuery);
 
-    function toggleMenu(menu$, triggerData) {
+/***/ }),
+
+/***/ "./resources/js/classes/Description.class.js":
+/*!***************************************************!*\
+  !*** ./resources/js/classes/Description.class.js ***!
+  \***************************************************/
+/*! exports provided: Description */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Description", function() { return Description; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * Created by User on 13.11.2019.
+ */
+var Description =
+/*#__PURE__*/
+function () {
+  function Description(settings) {
+    _classCallCheck(this, Description);
+
+    this._serviceType$ = $(settings.card);
+    this._serviceTypeContainer = settings.cardContainer;
+    this._shortDescription = settings.shortDescription;
+    this._fullDescription = settings.fullDescription;
+    this._switchShortDescContainer$ = $(settings.switchShortDescContainer);
+    this._currentOverServiceType = null;
+  }
+
+  _createClass(Description, [{
+    key: "show",
+    value: function show() {
+      this._serviceType$.on('click.service_full_description', 'button', $.proxy(this._showFullDescription, this));
+
+      this._serviceType$.on('mouseover.service_short_description', $.proxy(this._short_description_over, this));
+
+      this._serviceType$.on('mouseout.service_full_description', $.proxy(this._full_description_out, this));
+
+      this._switchShortDescContainer$.on('click.service_short_description', 'span', $.proxy(this._showShortDescription, this));
+    }
+  }, {
+    key: "_showFullDescription",
+    value: function _showFullDescription(e) {
+      var target = e.target;
+      if (target.tagName !== 'BUTTON') return false;
+      var currentServiceDescription$ = $(target.closest(this._serviceTypeContainer)); //let self = this;
+
+      var shortDescription$ = $(this._shortDescription, currentServiceDescription$);
+      var fullDescription$ = $(this._fullDescription, currentServiceDescription$);
+      currentServiceDescription$.queue(function (next) {
+        shortDescription$.queue(function (next) {
+          $(this).fadeIn('normal');
+          next();
+        }).queue(function (next) {
+          $(this).addClass('d-none');
+          next();
+        });
+        fullDescription$.queue(function (next) {
+          $(this).removeClass('d-none');
+          next();
+        }).queue(function (next) {
+          $(this).fadeOut(0);
+          next();
+        }).queue(function (next) {
+          $(this).fadeIn('normal');
+          next();
+        });
+        var fullHeightDescription = fullDescription$.height() + 24;
+        $(this).animate({
+          height: "".concat(fullHeightDescription, "px")
+        }, 500).data('full-description', true);
+        next();
+      });
+    }
+  }, {
+    key: "_showShortDescription",
+    value: function _showShortDescription(e) {
+      var target = e.target;
+      if (target.tagName !== 'SPAN') return false;
+      var currentServiceDescription$ = $(target.closest(this._serviceTypeContainer));
+      var shortDescription$ = $(this._shortDescription, currentServiceDescription$);
+      var fullDescription$ = $(this._fullDescription, currentServiceDescription$);
+      currentServiceDescription$.queue(function (next) {
+        fullDescription$.queue(function (next) {
+          $(this).fadeIn('normal');
+          next();
+        }).queue(function (next) {
+          $(this).addClass('d-none');
+          next();
+        });
+        shortDescription$.queue(function (next) {
+          $(this).removeClass('d-none');
+          next();
+        }).queue(function (next) {
+          $(this).fadeOut(0);
+          next();
+        }).queue(function (next) {
+          $(this).fadeIn('normal');
+          next();
+        });
+        $(this).animate({
+          height: "180px"
+        }, 500).removeData('full-description');
+        next();
+      });
+    }
+  }, {
+    key: "_short_description_over",
+    value: function _short_description_over(e) {
+      if (this._currentOverServiceType !== null) return false;
+      var target = e.target.closest(this._serviceTypeContainer);
+      if (!target) return false;
+      this._currentOverServiceType = target;
+    }
+  }, {
+    key: "_full_description_out",
+    value: function _full_description_out(e) {
+      if (!this._currentOverServiceType) return false;
+      var relatedTarget = e.relatedTarget; //console.log(relatedTarget);
+
+      while (relatedTarget) {
+        // go up the parent chain and check – if we're still inside currentElem
+        // then that's an internal transition – ignore it
+        if (relatedTarget == this._currentOverServiceType) {
+          console.log('here');
+          console.log(relatedTarget);
+          return;
+        }
+
+        relatedTarget = relatedTarget.parentNode;
+      }
+
+      this._switchShortDescContainer$["this"]._currentOverServiceType = null;
+    }
+  }]);
+
+  return Description;
+}();
+
+/***/ }),
+
+/***/ "./resources/js/classes/Menu.class.js":
+/*!********************************************!*\
+  !*** ./resources/js/classes/Menu.class.js ***!
+  \********************************************/
+/*! exports provided: Menu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Menu", function() { return Menu; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Menu =
+/*#__PURE__*/
+function () {
+  function Menu(toggleBtn) {
+    _classCallCheck(this, Menu);
+
+    this._toggleBtn$ = $(toggleBtn);
+    this._toggleMenu$ = this._toggleBtn$.next();
+  }
+
+  _createClass(Menu, [{
+    key: "run",
+    value: function run() {
+      this._toggleBtn$.on('click.toggle-menu', 'i', this._toggleMenuHandler.bind(this, this._toggleMenu$));
+
+      $(window).on('resize.toggle-menu', Menu.resizeHandler.bind(this, this._toggleBtn$, this._toggleMenu$));
+    }
+  }, {
+    key: "_toggleMenuHandler",
+    value: function _toggleMenuHandler(menu$, triggerData) {
       if (triggerData === 'close') {
-        closeToggleMenu(menu$);
+        this._closeToggleMenu(menu$);
+
         return false;
       }
 
@@ -117,11 +325,12 @@
           next();
         });
       } else {
-        closeToggleMenu(menu$);
+        this._closeToggleMenu(menu$);
       }
     }
-
-    function closeToggleMenu(menu$) {
+  }, {
+    key: "_closeToggleMenu",
+    value: function _closeToggleMenu(menu$) {
       menu$.queue(function (next) {
         $(this).slideUp('normal');
         next();
@@ -133,30 +342,19 @@
         next();
       });
     }
-
-    $(window).on('resize.toggle-menu', resizeHandler.bind(null, btn$, toggleMenu$));
-
-    function resizeHandler(btn$, toggleMenu$, event) {
+  }], [{
+    key: "resizeHandler",
+    value: function resizeHandler(btn$, toggleMenu$, event) {
       var windowWidth = $(event.target).width();
 
       if (windowWidth >= 580 && toggleMenu$.hasClass('d-none') === false) {
-        btn$.trigger('click.toggle-menu', 'close');
+        btn$.find('i').trigger('click.toggle-menu', 'close');
       }
     }
+  }]);
 
-    $('.service_type').on('click.service_description', toggle_description);
-
-    function toggle_description(e) {
-      var target = e.target;
-      var parent = '#card-container';
-      if (target.tagName !== 'BUTTON') return false;
-      var currentServiceDescription$ = $(target.closest(parent));
-      currentServiceDescription$.animate({
-        height: "350px"
-      }, 500);
-    }
-  });
-})(jQuery);
+  return Menu;
+}();
 
 /***/ }),
 

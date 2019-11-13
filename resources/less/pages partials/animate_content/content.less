@@ -120,13 +120,39 @@ main[role="main"] {
                         background: #F9F3E4;
                         z-index: @defaultZIndex*100;
 
-                        .back-short-content {
+                        .back-short-content,.full-description {
                             p{
                                 text-align: center;
                                 padding: @defaultGutter/5 @defaultGutter/5;
                                 font-family: @defaultFontFamily;
                                 font-size: @defaultFontSize;
                                 font-weight: bold;
+                            }
+                        }
+                        .full-description{
+                            padding-top: @defaultGutter/2;
+                            p{
+                                font-size: @defaultFontSize*.9;
+                            }
+                            .back-collapse-text{
+                                margin-top: @defaultGutter/2;
+                                display: flex;
+                                justify-content: flex-end;
+                                padding-right: @defaultGutter/2;
+                                p{
+                                    background-color: #262626;
+                                    //.alignTo(right);
+                                    display: inline-block;
+                                    border: 1px solid transparent;
+                                    border-radius: .25rem;
+                                    span{
+                                        color:white;
+                                        font-size: @defaultFontSize*.8;
+                                        &:first-child{
+                                            padding-right: @defaultGutter/4;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
