@@ -306,13 +306,10 @@ main[role="main"] .container .box #card-container #card .blackout {
   background-color: rgba(0, 0, 0, 0.6);
 }
 main[role="main"] .container .box #card-container #card:hover {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
   box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
-}
-main[role="main"] .container .box #card-container #card:hover .blackout,
-main[role="main"] .container .box #card-container #card:hover .service-header {
-  visibility: hidden;
+  /*.blackout, .service-header{
+                            visibility: hidden;
+                        }*/
 }
 main[role="main"] .container .box #card-container #card .face {
   display: -webkit-box;
@@ -326,7 +323,7 @@ main[role="main"] .container .box #card-container #card .face {
           backface-visibility: hidden;
 }
 main[role="main"] .container .box #card-container #card .face .service-header {
-  margin-top: 64.8px;
+  top: 64.8px;
   position: absolute;
   z-index: 1000;
   font-family: "Roboto", Sans-serif;
@@ -501,7 +498,7 @@ main[role="main"] .container:last-child #card-container .service-header span:fir
 /*@import "../pages partials/main_content/media_content";*/
 @media screen and (min-width: 319px) and (max-width: 370px) {
   main[role="main"] .container .box #card .face .service-header {
-    margin-top: 67.2px !important;
+    top: 67.2px !important;
     font-size: 16px !important;
   }
   main[role="main"] .container .box #card .back .back-short-content p {

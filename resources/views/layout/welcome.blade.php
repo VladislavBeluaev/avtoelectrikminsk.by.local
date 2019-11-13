@@ -17,12 +17,15 @@
                 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
                 crossorigin="anonymous"></script>
         <script src="{{asset('js/master.js')}}" type="module" defer></script>
+        {!! $map['js'] !!}
     </head>
     <body>
+    {!! $map['html'] !!}
     <div class="container">
         @yield('header')
         @yield('main_menu')
         @yield('content')
+        @yield('map')
     </div>
     </body>
 </html>

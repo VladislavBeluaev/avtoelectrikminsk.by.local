@@ -6,6 +6,7 @@ import {Description} from "./classes/Description.class";
         (new Description({
             card:'.service_type',
             cardContainer:'#card-container',
+            cardTransform:'.front',
             shortDescription:'.short-description',
             fullDescription:'.full-description',
             switchShortDescContainer:'.back-collapse-text'

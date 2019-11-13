@@ -1,108 +1,142 @@
 /**
  * Created by User on 13.11.2019.
  */
-export class Description{
-    constructor(settings){
+export class Description {
+    constructor(settings) {
         this._serviceType$ = $(settings.card);
         this._serviceTypeContainer = settings.cardContainer;
+        this._cardTransform = settings.cardTransform;
         this._shortDescription = settings.shortDescription;
         this._fullDescription = settings.fullDescription;
         this._switchShortDescContainer$ = $(settings.switchShortDescContainer);
         this._currentOverServiceType = null;
     }
-    show(){
-        this._serviceType$.on('click.service_full_description','button',$.proxy(this._showFullDescription,this));
-        this._serviceType$.on('mouseover.service_short_description',$.proxy(this._short_description_over,this));
-        this._serviceType$.on('mouseout.service_full_description',$.proxy(this._full_description_out,this));
 
+    show() {
+        this._serviceType$.on('click.service_full_description', 'button', $.proxy(this._showFullDescription, this));
+        this._serviceType$.on('mouseover.service_short_description', $.proxy(this._short_description_over, this));
+        this._serviceType$.on('mouseout.service_full_description', $.proxy(this._full_description_out, this));
 
-        this._switchShortDescContainer$.on('click.service_short_description','span',$.proxy(this._showShortDescription,this));
+        $(this._cardTransform).on('click.transform-back-face', $.proxy(this._showBackFace, this));
+
+        this._switchShortDescContainer$.on('click.service_short_description', 'span', $.proxy(this._showShortDescription, this));
     }
-    _showFullDescription(e){
+
+    _showFullDescription(e) {
         let target = e.target;
-        if(target.tagName!=='BUTTON')
+        if (target.tagName !== 'BUTTON')
             return false;
-        let currentServiceDescription$ = $(target.closest(this._serviceTypeContainer));
-        //let self = this;
-        let shortDescription$ = $(this._shortDescription,currentServiceDescription$);
-        let fullDescription$ = $(this._fullDescription,currentServiceDescription$);
-        currentServiceDescription$.queue(function (next) {
-            shortDescription$.queue(function (next) {
-                $(this).fadeIn('normal');
-                next();
-            }).queue(function (next) {
-                $(this).addClass('d-none');
-                next();
-            });
-            fullDescription$.queue(function (next) {
-                $(this).removeClass('d-none');
-                next();
-            }).queue(function (next) {
-                $(this).fadeOut(0);
-                next();
-            }).queue(function (next) {
-                $(this).fadeIn('normal');
-                next();
-            });
-            let fullHeightDescription = fullDescription$.height()+24;
-            $(this).animate({
-                height: `${fullHeightDescription}px`,
-            }, 500 ).data('full-description',true);
-            next();
-        });
+        this._toggleDescription(target, 'back');
+        e.stopImmediatePropagation();
     }
-    _showShortDescription(e){
+
+    _showShortDescription(e) {
         let target = e.target;
-        if(target.tagName!=='SPAN')
+        if (target.tagName !== 'SPAN')
             return false;
-        let currentServiceDescription$ = $(target.closest(this._serviceTypeContainer));
-        let shortDescription$ = $(this._shortDescription,currentServiceDescription$);
-        let fullDescription$ = $(this._fullDescription,currentServiceDescription$);
-        currentServiceDescription$.queue(function (next) {
-            fullDescription$.queue(function (next) {
-                $(this).fadeIn('normal');
-                next();
-            }).queue(function (next) {
-                $(this).addClass('d-none');
-                next();
-            });
-            shortDescription$.queue(function (next) {
-                $(this).removeClass('d-none');
-                next();
-            }).queue(function (next) {
-                $(this).fadeOut(0);
-                next();
-            }).queue(function (next) {
-                $(this).fadeIn('normal');
-                next();
-            });
-            $(this).animate({
-                height: `180px`,
-            }, 500 ).removeData('full-description');
-            next();
-        });
+        this._toggleDescription(target, 'front');
+        e.stopImmediatePropagation();
     }
-    _short_description_over(e){
-        if (this._currentOverServiceType!==null) return false;
+
+    _short_description_over(e) {
+        if (this._currentOverServiceType !== null) return false;
         let target = e.target.closest(this._serviceTypeContainer);
         if (!target) return false;
         this._currentOverServiceType = target;
     }
-    _full_description_out(e){
+
+    _full_description_out(e) {
         if (!this._currentOverServiceType) return false;
         let relatedTarget = e.relatedTarget;
-        //console.log(relatedTarget);
         while (relatedTarget) {
-            // go up the parent chain and check – if we're still inside currentElem
-            // then that's an internal transition – ignore it
-            if (relatedTarget == this._currentOverServiceType){
-                console.log('here');
-                console.log(relatedTarget);
+            if (relatedTarget === this._currentOverServiceType) {
                 return;
             }
             relatedTarget = relatedTarget.parentNode;
         }
-        this._switchShortDescContainer$.
+        this._showFrontFace();
+        if ($(this._currentOverServiceType).data('full-description') !== undefined) {
+            console.log('calling');
+            $(this._currentOverServiceType).find(this._switchShortDescContainer$).find('span').first().trigger('click.service_short_description');
+        }
         this._currentOverServiceType = null;
+    }
+
+    _toggleDescription(target, face) {
+        let currentServiceDescription$ = $(target.closest(this._serviceTypeContainer));
+        let shortDescription$ = $(this._shortDescription, currentServiceDescription$);
+        let fullDescription$ = $(this._fullDescription, currentServiceDescription$);
+        let self = this;
+        currentServiceDescription$.queue(function (next) {
+            if (face === 'back') {
+                $(this).data('full-description', true);
+                self._toggleFade(fullDescription$, shortDescription$);
+            } else if (face === 'front') {
+                $(this).removeData('full-description');
+                self._toggleFade(shortDescription$, fullDescription$);
+            }
+            $(this).animate({
+                height: face === 'back' ? `${fullDescription$.height() + 24}px` : '180px',
+            }, 500);
+            next();
+        });
+    }
+
+    _toggleFade(inEl, outEl) {
+        outEl.queue(function (next) {
+            $(this).fadeIn('normal');
+            next();
+        }).queue(function (next) {
+            $(this).addClass('d-none');
+            next();
+        });
+        inEl.queue(function (next) {
+            $(this).removeClass('d-none');
+            next();
+        }).queue(function (next) {
+            $(this).fadeOut(0);
+            next();
+        }).queue(function (next) {
+            $(this).fadeIn('normal');
+            next();
+        });
+    }
+
+
+    _showBackFace(e) {
+        let target = e.target;
+        if (!target.closest(this._cardTransform)) return false;
+        this._showFrontFace();
+        let card = target.closest(this._cardTransform).parentNode;
+        $(card).queue(function (next) {
+            $(this).css({
+                transform: 'rotateY(180deg)'
+            }).attr('data-current-transform', true);
+            next();
+        }).queue(function (next) {
+            let parent$ = $(this).parent();
+            parent$.find('.blackout, .service-header').css({
+                visibility: 'hidden'
+            });
+            next();
+        });
+    }
+
+    _showFrontFace() {
+        let currentTransform$ = $(`[data-current-transform=true]`);
+        if (currentTransform$.length) {
+            currentTransform$.queue(function (next) {
+                $(this).css({
+                    transform: 'rotateY(0deg)'
+                }).removeAttr('data-current-transform');
+                next();
+            }).queue(function (next) {
+                let parent$ = $(this).parent();
+                parent$.find('.blackout, .service-header').css({
+                    visibility: 'visible'
+                });
+                next();
+            });
+        }
     }
 }

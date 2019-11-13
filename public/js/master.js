@@ -106,6 +106,7 @@ __webpack_require__.r(__webpack_exports__);
     new _classes_Description_class__WEBPACK_IMPORTED_MODULE_1__["Description"]({
       card: '.service_type',
       cardContainer: '#card-container',
+      cardTransform: '.front',
       shortDescription: '.short-description',
       fullDescription: '.full-description',
       switchShortDescContainer: '.back-collapse-text'
@@ -153,6 +154,7 @@ function () {
 
     this._serviceType$ = $(settings.card);
     this._serviceTypeContainer = settings.cardContainer;
+    this._cardTransform = settings.cardTransform;
     this._shortDescription = settings.shortDescription;
     this._fullDescription = settings.fullDescription;
     this._switchShortDescContainer$ = $(settings.switchShortDescContainer);
@@ -168,6 +170,8 @@ function () {
 
       this._serviceType$.on('mouseout.service_full_description', $.proxy(this._full_description_out, this));
 
+      $(this._cardTransform).on('click.transform-back-face', $.proxy(this._showBackFace, this));
+
       this._switchShortDescContainer$.on('click.service_short_description', 'span', $.proxy(this._showShortDescription, this));
     }
   }, {
@@ -175,66 +179,20 @@ function () {
     value: function _showFullDescription(e) {
       var target = e.target;
       if (target.tagName !== 'BUTTON') return false;
-      var currentServiceDescription$ = $(target.closest(this._serviceTypeContainer)); //let self = this;
 
-      var shortDescription$ = $(this._shortDescription, currentServiceDescription$);
-      var fullDescription$ = $(this._fullDescription, currentServiceDescription$);
-      currentServiceDescription$.queue(function (next) {
-        shortDescription$.queue(function (next) {
-          $(this).fadeIn('normal');
-          next();
-        }).queue(function (next) {
-          $(this).addClass('d-none');
-          next();
-        });
-        fullDescription$.queue(function (next) {
-          $(this).removeClass('d-none');
-          next();
-        }).queue(function (next) {
-          $(this).fadeOut(0);
-          next();
-        }).queue(function (next) {
-          $(this).fadeIn('normal');
-          next();
-        });
-        var fullHeightDescription = fullDescription$.height() + 24;
-        $(this).animate({
-          height: "".concat(fullHeightDescription, "px")
-        }, 500).data('full-description', true);
-        next();
-      });
+      this._toggleDescription(target, 'back');
+
+      e.stopImmediatePropagation();
     }
   }, {
     key: "_showShortDescription",
     value: function _showShortDescription(e) {
       var target = e.target;
       if (target.tagName !== 'SPAN') return false;
-      var currentServiceDescription$ = $(target.closest(this._serviceTypeContainer));
-      var shortDescription$ = $(this._shortDescription, currentServiceDescription$);
-      var fullDescription$ = $(this._fullDescription, currentServiceDescription$);
-      currentServiceDescription$.queue(function (next) {
-        fullDescription$.queue(function (next) {
-          $(this).fadeIn('normal');
-          next();
-        }).queue(function (next) {
-          $(this).addClass('d-none');
-          next();
-        });
-        shortDescription$.queue(function (next) {
-          $(this).removeClass('d-none');
-          next();
-        }).queue(function (next) {
-          $(this).fadeOut(0);
-          next();
-        }).queue(function (next) {
-          $(this).fadeIn('normal');
-          next();
-        });
-        $(this).animate({
-          height: "180px"
-        }, 500).removeData('full-description');
-        next();
-      });
+
+      this._toggleDescription(target, 'front');
+
+      e.stopImmediatePropagation();
     }
   }, {
     key: "_short_description_over",
@@ -248,21 +206,111 @@ function () {
     key: "_full_description_out",
     value: function _full_description_out(e) {
       if (!this._currentOverServiceType) return false;
-      var relatedTarget = e.relatedTarget; //console.log(relatedTarget);
+      var relatedTarget = e.relatedTarget;
 
       while (relatedTarget) {
-        // go up the parent chain and check – if we're still inside currentElem
-        // then that's an internal transition – ignore it
-        if (relatedTarget == this._currentOverServiceType) {
-          console.log('here');
-          console.log(relatedTarget);
+        if (relatedTarget === this._currentOverServiceType) {
           return;
         }
 
         relatedTarget = relatedTarget.parentNode;
       }
 
-      this._switchShortDescContainer$["this"]._currentOverServiceType = null;
+      this._showFrontFace();
+
+      if ($(this._currentOverServiceType).data('full-description') !== undefined) {
+        console.log('calling');
+        $(this._currentOverServiceType).find(this._switchShortDescContainer$).find('span').first().trigger('click.service_short_description');
+      }
+
+      this._currentOverServiceType = null;
+    }
+  }, {
+    key: "_toggleDescription",
+    value: function _toggleDescription(target, face) {
+      var currentServiceDescription$ = $(target.closest(this._serviceTypeContainer));
+      var shortDescription$ = $(this._shortDescription, currentServiceDescription$);
+      var fullDescription$ = $(this._fullDescription, currentServiceDescription$);
+      var self = this;
+      currentServiceDescription$.queue(function (next) {
+        if (face === 'back') {
+          $(this).data('full-description', true);
+
+          self._toggleFade(fullDescription$, shortDescription$);
+        } else if (face === 'front') {
+          $(this).removeData('full-description');
+
+          self._toggleFade(shortDescription$, fullDescription$);
+        }
+
+        $(this).animate({
+          height: face === 'back' ? "".concat(fullDescription$.height() + 24, "px") : '180px'
+        }, 500);
+        next();
+      });
+    }
+  }, {
+    key: "_toggleFade",
+    value: function _toggleFade(inEl, outEl) {
+      outEl.queue(function (next) {
+        $(this).fadeIn('normal');
+        next();
+      }).queue(function (next) {
+        $(this).addClass('d-none');
+        next();
+      });
+      inEl.queue(function (next) {
+        $(this).removeClass('d-none');
+        next();
+      }).queue(function (next) {
+        $(this).fadeOut(0);
+        next();
+      }).queue(function (next) {
+        $(this).fadeIn('normal');
+        next();
+      });
+    }
+  }, {
+    key: "_showBackFace",
+    value: function _showBackFace(e) {
+      var target = e.target;
+      if (!target.closest(this._cardTransform)) return false;
+
+      this._showFrontFace();
+
+      var card = target.closest(this._cardTransform).parentNode;
+      $(card).queue(function (next) {
+        $(this).css({
+          transform: 'rotateY(180deg)'
+        }).attr('data-current-transform', true);
+        next();
+      }).queue(function (next) {
+        var parent$ = $(this).parent();
+        parent$.find('.blackout, .service-header').css({
+          visibility: 'hidden'
+        });
+        next();
+      });
+    }
+  }, {
+    key: "_showFrontFace",
+    value: function _showFrontFace() {
+      var currentTransform$ = $("[data-current-transform=true]");
+
+      if (currentTransform$.length) {
+        currentTransform$.queue(function (next) {
+          $(this).css({
+            transform: 'rotateY(0deg)'
+          }).removeAttr('data-current-transform');
+          next();
+        }).queue(function (next) {
+          var parent$ = $(this).parent();
+          parent$.find('.blackout, .service-header').css({
+            visibility: 'visible'
+          });
+          next();
+        });
+      }
     }
   }]);
 
@@ -376,8 +424,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! d:\OSPanel\domains\avtoelectrikminsk.by.local\resources\js\_master.js */"./resources/js/_master.js");
-module.exports = __webpack_require__(/*! d:\OSPanel\domains\avtoelectrikminsk.by.local\resources\less\_master.less */"./resources/less/_master.less");
+__webpack_require__(/*! d:\temp\OSPanel_new\OSPanel\domains\avtoelectrikminsk.by.local\resources\js\_master.js */"./resources/js/_master.js");
+module.exports = __webpack_require__(/*! d:\temp\OSPanel_new\OSPanel\domains\avtoelectrikminsk.by.local\resources\less\_master.less */"./resources/less/_master.less");
 
 
 /***/ })
