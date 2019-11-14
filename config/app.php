@@ -162,7 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         FarhanWazir\GoogleMaps\GMapsServiceProvider::class,
-
+        DanielMadu\JivoChat\JivoChatServiceProvider::class,
         /*
          * Package Service Providers...
          */

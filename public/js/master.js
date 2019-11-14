@@ -97,6 +97,8 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _classes_Menu_class__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./classes/Menu.class */ "./resources/js/classes/Menu.class.js");
 /* harmony import */ var _classes_Description_class__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./classes/Description.class */ "./resources/js/classes/Description.class.js");
+/* harmony import */ var _classes_YandexMap_class__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./classes/YandexMap.class */ "./resources/js/classes/YandexMap.class.js");
+
 
 
 
@@ -111,17 +113,7 @@ __webpack_require__.r(__webpack_exports__);
       fullDescription: '.full-description',
       switchShortDescContainer: '.back-collapse-text'
     }).show();
-    /*$('.service_type').on('click.service_description',toggle_description);
-    function toggle_description (e) {
-        let target = e.target;
-        let parent = '#card-container';
-          if(target.tagName!=='BUTTON')
-            return false;
-        let currentServiceDescription$ = $(target.closest(parent));
-        currentServiceDescription$.animate({
-            height: "350px",
-        }, 500 );
-      }*/
+    new _classes_YandexMap_class__WEBPACK_IMPORTED_MODULE_2__["YandexMap"]().run();
   });
 })(jQuery);
 
@@ -402,6 +394,39 @@ function () {
   }]);
 
   return Menu;
+}();
+
+/***/ }),
+
+/***/ "./resources/js/classes/YandexMap.class.js":
+/*!*************************************************!*\
+  !*** ./resources/js/classes/YandexMap.class.js ***!
+  \*************************************************/
+/*! exports provided: YandexMap */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "YandexMap", function() { return YandexMap; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var YandexMap =
+/*#__PURE__*/
+function () {
+  function YandexMap() {
+    _classCallCheck(this, YandexMap);
+  }
+
+  _createClass(YandexMap, [{
+    key: "run",
+    value: function run() {}
+  }]);
+
+  return YandexMap;
 }();
 
 /***/ }),

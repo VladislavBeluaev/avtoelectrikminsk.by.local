@@ -55,3 +55,4 @@
         @endforeach
     </main>
 @endsection
+@include('partials.map')

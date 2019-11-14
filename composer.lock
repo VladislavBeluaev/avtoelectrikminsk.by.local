@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e499a1402c575598cec57701b7a98660",
+    "content-hash": "9332c2e5008df764e26e1f368600dfd3",
     "packages": [
+        {
+            "name": "danielmadu/laravel-jivochat",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/danielmadu/laravel-jivochat.git",
+                "reference": "bfd0c58941aeb04eacca27ab5189248d959f941d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/danielmadu/laravel-jivochat/zipball/bfd0c58941aeb04eacca27ab5189248d959f941d",
+                "reference": "bfd0c58941aeb04eacca27ab5189248d959f941d",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DanielMadu\\JivoChat\\JivoChatServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DanielMadu\\JivoChat\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "danielmadu",
+                    "email": "daniel.madureira.batista@gmail.com"
+                }
+            ],
+            "description": "Custom Blade directive for JivoChat",
+            "time": "2019-08-07T15:18:00+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
