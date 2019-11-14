@@ -17,7 +17,8 @@
                 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
                 crossorigin="anonymous"></script>
         <script src="{{asset('js/master.js')}}" type="module" defer></script>
-        <script src="//code.jivosite.com/widget.js" data-jv-id="CjbACmwmlC" async></script>
+        {{--<script src="//code.jivosite.com/widget.js" data-jv-id="CjbACmwmlC" async></script>--}}
+        {!! $map['js'] !!}
     </head>
     <body>
     <div class="container">

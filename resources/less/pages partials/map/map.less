@@ -1,0 +1,44 @@
+@import "../../partials/variables";
+@import "../../partials/functions";
+@import "../../partials/mixins";
+
+section[role='application'] {
+  .contacts {
+    position: relative;
+    button.gm-fullscreen-control, div.gm-svpc {
+      display: none !important;
+    }
+    h2{
+      font-family: @defaultFontFamily;
+      font-size: @defaultFontSize*2;
+      font-weight: bold;
+      margin-top: @defaultGutter*1.5;
+      margin-bottom: @defaultGutter;
+    }
+    .contacts-map-wrapper{
+      position: relative;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+      .map-information{
+        border: 1px solid transparent;
+        border-radius: .5em;
+        width: 30%;
+        background-color: rgba(0, 0, 0, 0.75);
+        z-index: @defaultZIndex;
+      position: absolute;
+        top:2%;
+        left: .5%;
+        p{
+          text-align: center;
+         line-height: @defaultFontLineHeight;
+          font-family: @defaultFontFamily;
+          font-size: @defaultFontSize*1.1;
+          font-weight: bold;
+          color:white;
+          &:first-child{
+            margin-bottom: @defaultGutter/4;
+          }
+        }
+      }
+    }
+  }
+}

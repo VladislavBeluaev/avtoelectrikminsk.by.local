@@ -8,9 +8,30 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-   function index(Services $services){
+   function index(Services $services,GMaps $gmap){
+       $config['center'] = '53.899190,27.531930';
+       $config['zoom'] = 18;
+       $config['height'] = '500px';
+       $config['places'] = true;
+       $config['streetViewLinksControl'] = false;
+       $config['scrollwheel'] = false;
+       $config['disableMapTypeControl'] = true;
+       //$config['styles'] =["styles"=>"poi.business"];
+       $gmap->initialize($config);
 
-       return view('animate_main')->with('services',$services->with('service_types')->get());
+       //Marker map
+       $marker['position'] = '53.899190,27.531930';//'53.899150,27.532700';
+       $marker['infowindow_content'] = 'avtoelectrikminsk.by';
+       $marker['clusterMaxZoom'] = 0;
+       $marker['icon'] = asset('storage/map/marker_title_1.png');
+       $marker['title'] = 'ул. Западная 7а';
+       $gmap->add_marker($marker);
+
+       $map = $gmap->create_map();
+       return view('animate_main',[
+           'services'=>$services->with('service_types')->get(),
+           'map'=>$map
+       ]);
 
 
    }

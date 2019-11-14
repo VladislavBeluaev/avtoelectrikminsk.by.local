@@ -404,6 +404,45 @@ main[role="main"] .container .box #card-container:nth-child(8) .service-header s
 main[role="main"] .container:last-child #card-container .service-header span:first-child {
   text-align: center;
 }
+section[role='application'] .contacts {
+  position: relative;
+}
+section[role='application'] .contacts button.gm-fullscreen-control,
+section[role='application'] .contacts div.gm-svpc {
+  display: none !important;
+}
+section[role='application'] .contacts h2 {
+  font-family: "Roboto", Sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 36px;
+  margin-bottom: 24px;
+}
+section[role='application'] .contacts .contacts-map-wrapper {
+  position: relative;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+section[role='application'] .contacts .contacts-map-wrapper .map-information {
+  border: 1px solid transparent;
+  border-radius: 0.5em;
+  width: 30%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+  position: absolute;
+  top: 2%;
+  left: 0.5%;
+}
+section[role='application'] .contacts .contacts-map-wrapper .map-information p {
+  text-align: center;
+  line-height: 1.65;
+  font-family: "Roboto", Sans-serif;
+  font-size: 17.6px;
+  font-weight: bold;
+  color: white;
+}
+section[role='application'] .contacts .contacts-map-wrapper .map-information p:first-child {
+  margin-bottom: 6px;
+}
 @media screen and (max-width: 516px) {
   .header-wrapper .header-wrapper__logo {
     width: 100% !important;
@@ -559,5 +598,21 @@ main[role="main"] .container:last-child #card-container .service-header span:fir
   main[role="main"] .container .box #card-container:nth-child(5),
   main[role="main"] .container .box #card-container:nth-child(6) {
     margin-bottom: 2% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  section[role='application'] .contacts h2 {
+    text-align: center;
+  }
+  section[role='application'] .contacts .contacts-map-wrapper .map-information {
+    left: 2%;
+    width: 40%;
+  }
+}
+@media screen and (min-width: 300px) and (max-width: 420px) {
+  section[role='application'] .contacts .contacts-map-wrapper .map-information {
+    left: 2%;
+    background-color: #1d2124;
+    width: 60%;
   }
 }

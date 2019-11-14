@@ -449,8 +449,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! d:\temp\OSPanel_new\OSPanel\domains\avtoelectrikminsk.by.local\resources\js\_master.js */"./resources/js/_master.js");
-module.exports = __webpack_require__(/*! d:\temp\OSPanel_new\OSPanel\domains\avtoelectrikminsk.by.local\resources\less\_master.less */"./resources/less/_master.less");
+__webpack_require__(/*! d:\OSPanel\domains\avtoelectrikminsk.by.local\resources\js\_master.js */"./resources/js/_master.js");
+module.exports = __webpack_require__(/*! d:\OSPanel\domains\avtoelectrikminsk.by.local\resources\less\_master.less */"./resources/less/_master.less");
 
 
 /***/ })
