@@ -13,7 +13,9 @@ import {YandexMap} from "./classes/YandexMap.class";
             fullDescription:'.full-description',
             switchShortDescContainer:'.back-collapse-text'
         })).show();
-        (new YandexMap()).run();
+        (new YandexMap({mapContainer:'#map_canvas',
+            navigationUrl:"https://www.google.com/maps/dir//53.8991169,27.5319583/@53.899117,27.531958,16z?hl=ru-RU"}))
+            .run();
     });
 
 })(jQuery);

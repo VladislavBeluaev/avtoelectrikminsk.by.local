@@ -418,6 +418,65 @@ section[role='application'] .contacts h2 {
   margin-top: 36px;
   margin-bottom: 24px;
 }
+section[role='application'] .contacts .contacts-wrapper {
+  background-color: #f5f5f5;
+  padding-bottom: 24px;
+}
+section[role='application'] .contacts .contacts-wrapper h4 {
+  text-align: center;
+  padding-top: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 36px;
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div {
+  text-align: center;
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div p {
+  font-family: "Roboto", Sans-serif;
+  font-size: 22.4px;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.75);
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div p:last-child,
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div p:nth-child(3) {
+  font-style: normal;
+  font-weight: bold;
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div p a {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  vertical-align: center;
+  color: #000;
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div p a:hover {
+  text-decoration: none;
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div p a span:last-child {
+  padding-left: 6px;
+  font-size: 16px;
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div i svg {
+  width: 150px;
+}
+section[role='application'] .contacts .contacts-wrapper .wrapper-content div:first-child {
+  margin-right: 120px;
+}
+section[role='application'] .contacts h4 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
 section[role='application'] .contacts .contacts-map-wrapper {
   position: relative;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
@@ -442,6 +501,64 @@ section[role='application'] .contacts .contacts-map-wrapper .map-information p {
 }
 section[role='application'] .contacts .contacts-map-wrapper .map-information p:first-child {
   margin-bottom: 6px;
+}
+footer .container .container-wrapper {
+  background-color: #000;
+}
+footer .container div:first-child {
+  text-align: center;
+  font-family: "Roboto", Sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+footer .container .footer-content {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+}
+footer .container .footer-content div p {
+  font-weight: normal;
+}
+footer .container .footer-content div p a {
+  color: white;
+}
+footer .container .footer-content div:first-child {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  margin-left: 60px;
+}
+footer .container .footer-content div:first-child p:first-child {
+  margin-right: 24px;
+}
+footer .container .footer-content .footer-content-social {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  margin-right: 60px;
+}
+footer .container .footer-content .footer-content-social p {
+  font-weight: normal;
+}
+footer .container .footer-content .footer-content-social p:nth-child(2) {
+  margin-right: 24px;
+  margin-left: 24px;
+}
+footer .container .footer-content .footer-content-social p a {
+  color: white;
+}
+footer .container .footer-content .footer-content-social p a:hover {
+  text-decoration: none;
 }
 @media screen and (max-width: 516px) {
   .header-wrapper .header-wrapper__logo {
@@ -604,15 +721,48 @@ section[role='application'] .contacts .contacts-map-wrapper .map-information p:f
   section[role='application'] .contacts h2 {
     text-align: center;
   }
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content {
+    display: block;
+  }
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content div {
+    margin-right: 0!important;
+    margin-left: 0!important;
+    text-align: center;
+  }
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content div p a {
+    -webkit-box-pack: center;
+            justify-content: center;
+  }
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content div:first-child {
+    margin-bottom: 24px;
+  }
   section[role='application'] .contacts .contacts-map-wrapper .map-information {
     left: 2%;
     width: 40%;
   }
 }
-@media screen and (min-width: 300px) and (max-width: 420px) {
+@media screen and (min-width: 300px) and (max-width: 529px) {
   section[role='application'] .contacts .contacts-map-wrapper .map-information {
     left: 2%;
     background-color: #1d2124;
     width: 60%;
+  }
+}
+@media screen and (max-width: 991px) {
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content {
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+  }
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content div:first-child {
+    margin-left: 28.8px;
+  }
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content div:last-child {
+    margin-right: 28.8px;
+  }
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content div p {
+    font-size: 16px;
+  }
+  section[role='application'] .contacts .contacts-wrapper .wrapper-content div i svg {
+    width: 80px !important;
   }
 }

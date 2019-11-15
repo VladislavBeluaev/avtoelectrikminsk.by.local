@@ -1,40 +1,104 @@
 @import "../../partials/variables";
 @import "../../partials/functions";
 @import "../../partials/mixins";
-
 section[role='application'] {
+  //margin-bottom: @defaultGutter*2;
   .contacts {
     position: relative;
+
     button.gm-fullscreen-control, div.gm-svpc {
       display: none !important;
     }
-    h2{
+
+    h2 {
       font-family: @defaultFontFamily;
       font-size: @defaultFontSize*2;
       font-weight: bold;
       margin-top: @defaultGutter*1.5;
       margin-bottom: @defaultGutter;
     }
-    .contacts-map-wrapper{
+
+    .contacts-wrapper {
+      background-color: #f5f5f5;
+      padding-bottom: @defaultFontSize*1.5;
+      h4{
+        .alignTo(center);
+        padding-top: @defaultGutter/2;
+        font-size: @defaultFontSize*1.5;
+        font-weight: bold;
+        margin-bottom: @defaultGutter*1.5;
+      }
+      .wrapper-content {
+        display: flex;
+        justify-content: center;
+        div{
+          text-align: center;
+          p{
+            font-family: @defaultFontFamily;
+            font-size: @defaultFontSize*1.4;
+            font-style: italic;
+            color:rgba(0, 0, 0, 0.75);
+            &:last-child,&:nth-child(3){
+              font-style: normal;
+              font-weight: bold;
+            }
+            a{
+              display: flex;
+              align-items: center;
+              vertical-align: center;
+              color:@defaultFontColor;
+              &:hover{
+                text-decoration: none;
+              }
+              span{
+                &:last-child{
+                  padding-left: @defaultGutter/4;
+                  font-size: @defaultFontSize;
+                }
+              }
+            }
+          }
+          i {
+            svg{
+              width: 150px;
+            }
+          }
+          &:first-child{
+            margin-right: @defaultGutter*5;
+          }
+        }
+
+      }
+    }
+    h4{
+      margin-top: @defaultGutter;
+      margin-bottom: @defaultGutter;
+      .alignTo(center);
+      font-size: @defaultFontSize*1.5;
+      font-weight: bold;
+    }
+    .contacts-map-wrapper {
       position: relative;
       box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-      .map-information{
+      .map-information {
         border: 1px solid transparent;
         border-radius: .5em;
         width: 30%;
         background-color: rgba(0, 0, 0, 0.75);
         z-index: @defaultZIndex;
-      position: absolute;
-        top:2%;
+        position: absolute;
+        top: 2%;
         left: .5%;
-        p{
+
+        p {
           text-align: center;
-         line-height: @defaultFontLineHeight;
+          line-height: @defaultFontLineHeight;
           font-family: @defaultFontFamily;
           font-size: @defaultFontSize*1.1;
           font-weight: bold;
-          color:white;
-          &:first-child{
+          color: white;
+
+          &:first-child {
             margin-bottom: @defaultGutter/4;
           }
         }

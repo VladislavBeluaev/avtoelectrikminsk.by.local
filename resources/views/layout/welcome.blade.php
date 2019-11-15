@@ -26,6 +26,7 @@
         @yield('main_menu')
         @yield('content')
         @yield('map')
+        @yield('footer')
     </div>
     @jivochat
     </body>

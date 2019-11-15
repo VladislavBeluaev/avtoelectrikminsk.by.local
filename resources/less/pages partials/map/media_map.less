@@ -1,15 +1,35 @@
 @import "../../partials/variables";
 @import "../../partials/functions";
 @import "../../partials/mixins";
+
 @media screen and (max-width: 767px) {
   section[role='application'] {
     .contacts {
-
-      h2{
+      h2 {
         .alignTo(center);
       }
-      .contacts-map-wrapper{
-        .map-information{
+      .contacts-wrapper {
+        .wrapper-content {
+          display: block;
+          div {
+            margin-right: 0!important;
+            margin-left: 0!important;
+            text-align: center;
+            p{
+              a{
+                justify-content: center;
+              }
+            }
+            &:first-child{
+              margin-bottom: @defaultGutter;
+            }
+          }
+
+        }
+      }
+
+      .contacts-map-wrapper {
+        .map-information {
           left: 2%;
           width: 40%;
         }
@@ -17,11 +37,11 @@
     }
   }
 }
-@media screen and (min-width: 300px) and (max-width: 420px) {
+@media screen and (min-width: 300px) and (max-width: 529px) {
   section[role='application'] {
     .contacts {
-      .contacts-map-wrapper{
-        .map-information{
+      .contacts-map-wrapper {
+        .map-information {
           left: 2%;
           background-color: #1d2124;
           width: 60%;
@@ -29,4 +49,37 @@
       }
     }
   }
+}
+@media screen and (max-width: 991px) {
+  section[role='application'] {
+    .contacts {
+      .contacts-wrapper {
+        .wrapper-content {
+          justify-content: space-between;
+
+          div {
+            &:first-child {
+              margin-left: @defaultGutter*1.2;
+            }
+
+            &:last-child {
+              margin-right: @defaultGutter*1.2;
+            }
+
+            p {
+              font-size: @defaultFontSize;
+            }
+
+            i {
+              svg {
+                width: 80px !important;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+
 }

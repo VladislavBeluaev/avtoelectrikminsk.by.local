@@ -113,7 +113,10 @@ __webpack_require__.r(__webpack_exports__);
       fullDescription: '.full-description',
       switchShortDescContainer: '.back-collapse-text'
     }).show();
-    new _classes_YandexMap_class__WEBPACK_IMPORTED_MODULE_2__["YandexMap"]().run();
+    new _classes_YandexMap_class__WEBPACK_IMPORTED_MODULE_2__["YandexMap"]({
+      mapContainer: '#map_canvas',
+      navigationUrl: "https://www.google.com/maps/dir//53.8991169,27.5319583/@53.899117,27.531958,16z?hl=ru-RU"
+    }).run();
   });
 })(jQuery);
 
@@ -417,13 +420,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var YandexMap =
 /*#__PURE__*/
 function () {
-  function YandexMap() {
+  function YandexMap(settings) {
     _classCallCheck(this, YandexMap);
+
+    this._marker$ = $(settings.mapContainer);
+    this._url = settings.navigationUrl;
   }
 
   _createClass(YandexMap, [{
     key: "run",
-    value: function run() {}
+    value: function run() {
+      this._marker$.on('click.navigation', 'img', $.proxy(this._openNavigation, this));
+    }
+  }, {
+    key: "_openNavigation",
+    value: function _openNavigation() {
+      window.open(this._url);
+    }
   }]);
 
   return YandexMap;
@@ -449,8 +462,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! d:\OSPanel\domains\avtoelectrikminsk.by.local\resources\js\_master.js */"./resources/js/_master.js");
-module.exports = __webpack_require__(/*! d:\OSPanel\domains\avtoelectrikminsk.by.local\resources\less\_master.less */"./resources/less/_master.less");
+__webpack_require__(/*! d:\temp\OSPanel_new\OSPanel\domains\avtoelectrikminsk.by.local\resources\js\_master.js */"./resources/js/_master.js");
+module.exports = __webpack_require__(/*! d:\temp\OSPanel_new\OSPanel\domains\avtoelectrikminsk.by.local\resources\less\_master.less */"./resources/less/_master.less");
 
 
 /***/ })

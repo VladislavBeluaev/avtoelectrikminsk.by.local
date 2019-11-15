@@ -56,3 +56,4 @@
     </main>
 @endsection
 @include('partials.map')
+@include('partials.footer')

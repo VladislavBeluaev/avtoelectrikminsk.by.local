@@ -1,0 +1,63 @@
+@import "../../partials/variables";
+@import "../../partials/functions";
+@import "../../partials/mixins";
+
+footer{
+  .container{
+    .container-wrapper{
+      background-color: @defaultFontColor;
+    }
+    div:first-child{
+      .alignTo(center);
+      font-family: @defaultFontFamily;
+      font-size: @defaultFontSize*1.5;
+      font-weight: bold;
+      color:white;
+    }
+    .footer-content{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      div{
+        p{
+          font-weight: normal;
+          a{
+            color: white;
+          }
+        }
+        &:first-child{
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-left: @defaultGutter*2.5;
+          p{
+            &:first-child{
+              margin-right: @defaultGutter;
+            }
+          }
+
+        }
+      }
+      .footer-content-social{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: @defaultGutter*2.5;
+        p{
+          font-weight: normal;
+          &:nth-child(2){
+            margin-right: @defaultGutter;
+            margin-left: @defaultGutter;
+          }
+          a{
+            color:white;
+            &:hover{
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
