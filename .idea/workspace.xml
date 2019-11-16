@@ -149,7 +149,6 @@
       <find>window</find>
       <find>h2</find>
       <find>map-information</find>
-      <find>Request URL: http://maps.googleapis.com/maps/api/js?key=AIzaSyAgytIs_xNPclhvq0fCAbp_FlfPwZA1ybk&amp;sensor=falsesensor=false&amp;v=3&amp;libraries=places</find>
       <find>Request URL: http://maps.googleapis.com/maps/api/jsor=falsesensor=false&amp;v=3&amp;libraries=places</find>
       <find>Request URL: http://maps.googleapis.com/maps/api/</find>
       <find>Request URL: http://maps.googleapis.com/maps/api</find>
