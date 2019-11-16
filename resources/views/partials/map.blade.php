@@ -2,7 +2,7 @@
     <section role="application">
         <div class="container">
             <div class="contacts">
-                <h2>Контакты</h2>
+                <h2 id="contacts">Контакты</h2>
                 <div class="contacts-wrapper">
                     <h4>Свяжитесь с Нами</h4>
                     <div class="wrapper-content">
@@ -27,7 +27,7 @@
                                 </svg>
                             </i>
                             <p>Почта</p>
-                            <p><a href="">avtoelectrikminsk@gmail.com</a></p>
+                            <p><a href="mailto:avtoelectrikminsk@gmail.com">avtoelectrikminsk@gmail.com</a></p>
                         </div>
                         <div>
                             <i class="circ large icon tertiary">
@@ -56,8 +56,8 @@
                                 </svg>
                             </i>
                             <p>Телефоны</p>
-                            <p><a href=""><span>+375 29 925 80 45</span> <span>(круглосуточно)</span></a></p>
-                            <p><a href=""><span>+375 25 605 81 75</span><span> (круглосуточно)</span> </a></p>
+                            <p><a href="tel:+375 29 925 80 45"><span>+375 29 925 80 45</span> <span>(круглосуточно)</span></a></p>
+                            <p><a href="tel:+375 25 605 81 75"><span>+375 25 605 81 75</span><span> (круглосуточно)</span> </a></p>
                         </div>
                     </div>
                 </div>
@@ -66,6 +66,12 @@
                     <div class="map-information">
                         <p>г.Минск, Беларусь</p>
                         <p>ул. Западная 7а</p>
+                        <p class="touch-devices">
+                            <a href="https://www.google.com/maps/dir//53.8991169,27.5319583/@53.899117,27.531958,16z?hl=ru-RU">
+                                <span><i class="fas fa-location-arrow"></i></span>
+                                <span>Маршрут</span>
+                            </a>
+                        </p>
                     </div>
                     {!! $map['html'] !!}
                 </div>

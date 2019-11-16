@@ -101,6 +101,21 @@ section[role='application'] {
           &:first-child {
             margin-bottom: @defaultGutter/4;
           }
+          &.touch-devices{
+            padding-right: @defaultGutter/2;
+            text-align: right;
+            a{
+              color: #B9D0FD;
+              &:hover{
+                text-decoration: none;
+              }
+              span{
+                font-size: @defaultFontSize*.8;
+              }
+            }
+
+            display: none;
+          }
         }
       }
     }

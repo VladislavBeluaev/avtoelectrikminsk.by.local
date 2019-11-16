@@ -2,8 +2,86 @@
 @import "../../partials/functions";
 @import "../../partials/mixins";
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 767px) {
   footer{
+    .container {
+      .container-wrapper {
+        div{
+          div {
+            &:first-child {
+              width: 407px;
+              p{
+                font-size: @defaultFontSize*1.3;
+              }
+            }
+            &:last-child{
+              width: 407px;
+              p{
+                &:first-child{
+                  margin-left: -@defaultGutter/3;
+                }
+                a{
+                  font-size: @defaultFontSize;
+                  &:nth-child(2){
+                    margin-left:@defaultGutter/4;
+                    margin-right:@defaultGutter/4;
+                  }
+                }
+              }
 
+            }
+          }
+
+        }
+      }
+
+    }
   }
+}
+@media screen and (min-width: 319px) and (max-width: 499px) {
+  footer{
+    .container {
+      .container-wrapper {
+        div{
+          div {
+            &:first-child {
+              width: 100%;
+              p{
+                .alignTo(center);
+                font-size: @defaultFontSize;
+                span:first-child{
+                  .new-line;
+                }
+              }
+            }
+            &:last-child{
+              display: block;
+              text-align: center;
+              width: 100%;
+              p{
+                &:first-child{
+                  margin-left: 0;
+                }
+                &:nth-child(2){
+                  margin-top:@defaultGutter/2;
+                  margin-bottom:@defaultGutter/2;
+                }
+                a{
+                  font-size: @defaultFontSize*1.2;
+                  &:nth-child(2){
+                    margin-left:@defaultGutter;
+                    margin-right:@defaultGutter;
+                  }
+                }
+              }
+
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
 }

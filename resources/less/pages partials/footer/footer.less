@@ -2,62 +2,57 @@
 @import "../../partials/functions";
 @import "../../partials/mixins";
 
-footer{
-  .container{
-    .container-wrapper{
+footer {
+  .container {
+    .container-wrapper {
       background-color: @defaultFontColor;
-    }
-    div:first-child{
-      .alignTo(center);
-      font-family: @defaultFontFamily;
-      font-size: @defaultFontSize*1.5;
-      font-weight: bold;
-      color:white;
-    }
-    .footer-content{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       div{
-        p{
-          font-weight: normal;
-          a{
-            color: white;
-          }
-        }
-        &:first-child{
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          margin-left: @defaultGutter*2.5;
-          p{
-            &:first-child{
-              margin-right: @defaultGutter;
-            }
-          }
+        padding-top: @defaultGutter/4;
+        padding-bottom: @defaultGutter/4;
+        margin: auto;
+        div {
+          &:first-child {
+            width: 470px;
+            //.alignTo(center);
+            p{
 
-        }
-      }
-      .footer-content-social{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-right: @defaultGutter*2.5;
-        p{
-          font-weight: normal;
-          &:nth-child(2){
-            margin-right: @defaultGutter;
-            margin-left: @defaultGutter;
-          }
-          a{
-            color:white;
-            &:hover{
-              text-decoration: none;
+              letter-spacing: .15em;
+              font-family: @defaultFontFamily;
+              font-size: @defaultFontSize*1.5;
+              font-weight: bold;
+              color: white;
             }
           }
+          &:last-child{
+            display: flex;
+            justify-content: space-between;
+            width: 465px;
+            p{
+              &:first-child{
+                margin-left: -7px;
+              }
+              a{
+                letter-spacing: normal;
+                color: white;
+                display: inline-block;
+                font-weight: normal;
+                font-size: @defaultFontSize*1.2;
+                &:nth-child(2){
+                  margin-left:@defaultGutter/4;
+                  margin-right:@defaultGutter/4;
+                }
+                &:hover{
+                  text-decoration: none;
+                }
+              }
+            }
+
+          }
         }
+
       }
     }
+
   }
 
 }

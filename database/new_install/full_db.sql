@@ -16,13 +16,28 @@
 CREATE DATABASE IF NOT EXISTS `avtoelectrikminsk` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `avtoelectrikminsk`;
 
+-- Дамп структуры для таблица avtoelectrikminsk.gmaps_geocache
+CREATE TABLE IF NOT EXISTS `gmaps_geocache` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Дамп данных таблицы avtoelectrikminsk.gmaps_geocache: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `gmaps_geocache` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gmaps_geocache` ENABLE KEYS */;
+
 -- Дамп структуры для таблица avtoelectrikminsk.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Дамп данных таблицы avtoelectrikminsk.migrations: ~5 rows (приблизительно)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
@@ -32,7 +47,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(5, '2019_11_05_182336_create_services_table', 2),
 	(6, '2019_11_05_182815_create_service_types_table', 2),
 	(8, '2019_11_08_101614_add_columns_img_attribs_to_service_types', 3),
-	(10, '2019_11_12_154329_add_column_short_description_to_service_types', 4);
+	(10, '2019_11_12_154329_add_column_short_description_to_service_types', 4),
+	(11, '2019_11_13_141307_create_gmaps_geocache_table', 5),
+	(12, '2019_11_15_234643_add_column_en_name_to_services_table', 5);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Дамп структуры для таблица avtoelectrikminsk.password_resets
@@ -51,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 CREATE TABLE IF NOT EXISTS `services` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `en_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -58,9 +76,9 @@ CREATE TABLE IF NOT EXISTS `services` (
 
 -- Дамп данных таблицы avtoelectrikminsk.services: ~2 rows (приблизительно)
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
-INSERT INTO `services` (`id`, `name`, `created_at`, `updated_at`) VALUES
-	(1, 'диагностика', '2019-11-05 21:35:19', '2019-11-05 21:35:21'),
-	(2, 'ремонт', '2019-11-05 21:35:22', '2019-11-05 21:35:23');
+INSERT INTO `services` (`id`, `name`, `en_name`, `created_at`, `updated_at`) VALUES
+	(1, 'диагностика', 'diagnostics', '2019-11-05 21:35:19', '2019-11-05 21:35:21'),
+	(2, 'ремонт', 'repair', '2019-11-05 21:35:22', '2019-11-05 21:35:23');
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 
 -- Дамп структуры для таблица avtoelectrikminsk.service_types

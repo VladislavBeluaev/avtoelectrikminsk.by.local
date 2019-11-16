@@ -2,10 +2,10 @@
     <nav role="navigation">
         <div class="container">
             <ul role="menu">
-                <li role="menuitem"><a href="">Главная</a></li>
-                <li role="menuitem"><a href="">Диагностика</a></li>
-                <li role="menuitem"><a href="">Ремонт</a></li>
-                <li role="menuitem"><a href="">Контакты</a></li>
+                <li role="menuitem"><a href="{{route('main')}}">Главная</a></li>
+                <li role="menuitem"><a href="{{route('main')}}/#diagnostics">Диагностика</a></li>
+                <li role="menuitem"><a href="{{route('main')}}/#repair">Ремонт</a></li>
+                <li role="menuitem"><a href="{{route('main')}}/#contacts">Контакты</a></li>
             </ul>
         </div>
     </nav>
@@ -15,10 +15,10 @@
                 <i class="fa fa-2x fa-bars" aria-hidden="true"></i>
             </p>
             <ul role="menu">
-                <li role="menuitem"><a href="">Главная</a></li>
-                <li role="menuitem"><a href="">Диагностика</a></li>
-                <li role="menuitem"><a href="">Ремонт</a></li>
-                <li role="menuitem"><a href="">Контакты</a></li>
+                <li role="menuitem"><a href="{{route('main')}}">Главная</a></li>
+                <li role="menuitem"><a href="{{route('main')}}/#diagnostics">Диагностика</a></li>
+                <li role="menuitem"><a href="{{route('main')}}/#repair">Ремонт</a></li>
+                <li role="menuitem"><a href="{{route('main')}}/#contacts">Контакты</a></li>
             </ul>
         </div>
     </nav>

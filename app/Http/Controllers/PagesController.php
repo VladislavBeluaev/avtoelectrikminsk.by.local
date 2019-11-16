@@ -16,14 +16,14 @@ class PagesController extends Controller
        $config['streetViewLinksControl'] = false;
        $config['scrollwheel'] = false;
        $config['disableMapTypeControl'] = true;
-       //$config['styles'] =["styles"=>"poi.business"];
        $gmap->initialize($config);
 
        //Marker map
        $marker['position'] = '53.899190,27.531930';//'53.899150,27.532700';
        $marker['infowindow_content'] = 'avtoelectrikminsk.by';
        $marker['clusterMaxZoom'] = 0;
-       $marker['icon'] = asset('storage/map/output-onlinepngtools.png');
+       //$marker['icon'] = asset('storage/map/output-onlinepngtools.png');
+       $marker['icon'] = asset('storage/map/marker_title.png');
        $marker['title'] = 'ул. Западная 7а';
        $gmap->add_marker($marker);
 
